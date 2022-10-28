@@ -31,7 +31,11 @@ createApp({
 
             messageStatus: false,
 
-            message: "Congratulazioni! hai completato le tue tasks"
+            message: "Congratulazioni! hai completato le tue tasks",
+
+            text: "",
+
+            inputStatus: true
         }
     },
 
@@ -43,6 +47,25 @@ createApp({
             if(this.tasks.length === 0) {
 
                 this.messageStatus = true
+            }
+
+        },
+
+        addTask () {
+
+            if (this.text.length < 5) {
+
+                this.inputStatus = false
+
+                this.text = ""
+            } else {
+
+                this.tasks.push({
+                    text: this.text,
+                    done: false
+                }) 
+                
+                this.text = ""
             }
 
         }
