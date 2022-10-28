@@ -1,11 +1,33 @@
 
-import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-
+const { createApp } = Vue;
 
 createApp({
     data() {
         return {
-            message: 'Hello Vue!'
+            
+            tasks: [
+                {
+                    text: "Learn HTML",
+                    done: false
+                },
+
+                {
+                    text: "Learn CSS",
+                    done: true
+                },
+
+                {
+                    text: "Learn JavaScript",
+                    done: false
+                },
+
+                {
+                    text: "Learn Vue JS",
+                    done: false
+                },
+            ],
+
+            underline: "small"
         }
     }
 }).mount('#app')
