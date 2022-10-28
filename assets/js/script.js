@@ -85,13 +85,11 @@ createApp({
 
                 this.tasks[index].done = true  
                 
-                console.log(this.tasks[index].done)
 
             } else if(this.tasks[index].done === true) {
 
                 this.tasks[index].done = false
 
-                console.log(this.tasks[index].done)
 
             }
             
