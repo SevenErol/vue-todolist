@@ -4,7 +4,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            
+
             tasks: [
                 {
                     text: "Learn HTML",
@@ -35,7 +35,7 @@ createApp({
 
             text: "",
 
-            inputStatus: true
+            inputStatus: false
         }
     },
 
@@ -44,30 +44,59 @@ createApp({
 
             this.tasks.splice(index, 1)
 
-            if(this.tasks.length === 0) {
+            this.messageStatus = false
+
+            this.inputStatus = false
+
+            if (this.tasks.length === 0) {
 
                 this.messageStatus = true
             }
 
         },
 
-        addTask () {
+        addTask() {
 
             if (this.text.length < 5) {
 
-                this.inputStatus = false
+                this.inputStatus = true
 
                 this.text = ""
+
             } else {
 
                 this.tasks.push({
                     text: this.text,
                     done: false
-                }) 
-                
+                })
+
                 this.text = ""
+
+                this.messageStatus = false
+
+                this.inputStatus = false
             }
+
+        },
+
+        doUndoTask(index) {
+
+            if(this.tasks[index].done === false) {
+
+                this.tasks[index].done = true  
+                
+                console.log(this.tasks[index].done)
+
+            } else if(this.tasks[index].done === true) {
+
+                this.tasks[index].done = false
+
+                console.log(this.tasks[index].done)
+
+            }
+            
 
         }
     }
 }).mount('#app')
+

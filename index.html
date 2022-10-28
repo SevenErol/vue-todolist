@@ -28,17 +28,17 @@
 
         <h3>Things to do</h3>
 
-        <input type="text" v-model="text" @keyup.enter="addTask">
-        <button @click = "addTask">Add new task</button>
-        <h3 v-show="!inputStatus" class="red">Errore! devi inserire almeno 5 caratteri</h3>
+        <input type="text" v-model="text" @keyup.enter.stop="addTask">
+        <button @click.stop = "addTask">Add new task</button>
+        <h3 v-show="inputStatus" class="red">Errore! devi inserire almeno 5 caratteri</h3>
         <ul>
-            <li v-for="(task, index) in tasks" :class = "task.done ? 'small' : ''">
+            <li v-for="(task, index) in tasks" :class = "task.done ? 'small' : ''" @click.stop = "doUndoTask(index)">
                 {{task.text}}
-                <i class="fa-solid fa-circle-xmark" @click = "remover(index)"></i>
+                <i class="fa-solid fa-circle-xmark" @click.stop = "remover(index)"></i>
             </li>
         </ul>
 
-        <h4 v-show="messageStatus === true">
+        <h4 v-show="messageStatus">
             {{message}}
         </h4>
 
