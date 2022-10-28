@@ -28,10 +28,15 @@
 
         <h3>Things to do</h3>
         <ul>
-            <li v-for="task in tasks" :class = "task.done ? 'small' : ''">
+            <li v-for="(task, index) in tasks" :class = "task.done ? 'small' : ''">
                 {{task.text}}
+                <i class="fa-solid fa-circle-xmark" @click = "remover(index)"></i>
             </li>
         </ul>
+
+        <h4 v-show="messageStatus === true">
+            {{message}}
+        </h4>
 
 
     </div>

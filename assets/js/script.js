@@ -13,7 +13,7 @@ createApp({
 
                 {
                     text: "Learn CSS",
-                    done: true
+                    done: false
                 },
 
                 {
@@ -27,7 +27,24 @@ createApp({
                 },
             ],
 
-            underline: "small"
+            underline: "small",
+
+            messageStatus: false,
+
+            message: "Congratulazioni! hai completato le tue tasks"
+        }
+    },
+
+    methods: {
+        remover(index) {
+
+            this.tasks.splice(index, 1)
+
+            if(this.tasks.length === 0) {
+
+                this.messageStatus = true
+            }
+
         }
     }
 }).mount('#app')
